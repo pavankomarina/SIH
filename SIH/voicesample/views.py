@@ -9,3 +9,5 @@ from .models import *
 
 def index(request):
 	return render(request,'index.html',{})
+def loginpage(request):
+	return render(request,'loginpage.html',{})
