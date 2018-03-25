@@ -15,7 +15,7 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
+import mongoengine
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'voicesample',
+    'mongoengine.django.mongo_auth',
 ]
 
 MIDDLEWARE = [
@@ -49,6 +50,13 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+
+_MONGODB_NAME = 'thedb'
+mongoengine.connect(_MONGODB_NAME)
+
+
+SITE_ID=1
 
 ROOT_URLCONF = 'SIH.urls'
 
@@ -76,11 +84,9 @@ WSGI_APPLICATION = 'SIH.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+        'ENGINE': 'django.db.backends.dummy',
+    },
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
@@ -101,6 +107,18 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
+
+AUTHENTICATION_BACKENDS = (
+'mongo_auth.backends.MongoEngineBackend',
+'mongoengine.django.auth.MongoEngineBackend',
+)
+SESSION_ENGINE = 'mongoengine.django.sessions'
+SESSION_SERIALIZER = 'mongoengine.django.sessions.BSONSerializer'
+# AUTH_USER_MODEL = 'mongo_auth.MongoUser'
+# AUTH_USER_MODEL = ('mongo_auth.MongoUser')
+MONGOENGINE_USER_DOCUMENT = 'mongoengine.django.auth.User'
+# Internationalization
+# https://docs.djangoproject.com/en/1.11/topics/i18n/
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
 

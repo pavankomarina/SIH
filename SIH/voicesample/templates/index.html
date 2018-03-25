@@ -1,16 +1,30 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Home Page</title>
-
-	<!-- add css js files links here
-
-	-->
+	<title>Home page</title>
 </head>
 <body>
 
-<h1>Home Page</h1>
-<a href ="{% url 'voicesample:loginpage' %}">loginpagepage</a>
+<!-- display messages here -->
 
+	{% if messages %}
+	<ul class="messages">
+    	{% for message in messages %}
+    	<h1{% if message.tags %} class="{{ message.tags }}"{% endif %} style="color: red"></h1>
+    	<div id="dialog" title="New message">
+            <p>{{message}}</p>
+    	</div>
+    	{% endfor %}
+	</ul>
+	{% endif %}
+
+
+
+<p>hello{{request.user}}</p>
+<h1>Home page</h1>
+
+
+
+<a href="/logout">Logout</a>
 </body>
 </html>

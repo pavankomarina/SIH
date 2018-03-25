@@ -1,11 +1,27 @@
 <h2>Login</h2>
+
+<!-- display messages here -->
+
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <h1{% if message.tags %} class="{{ message.tags }}"{% endif %} style="color: red"></h1>
+    <div id="dialog" title="New message">
+            <p>{{message}}</p>
+    </div>
+    {% endfor %}
+</ul>
+{% endif %}
+
+
+<!-- login form starts here -->
 <form method="post">
   {% csrf_token %}
-  {{ form.as_p }}
-  <label for="uname"><b>Username</b></label>
-    <input type="text" placeholder="Enter Username" name="uname" required>
+  <!-- {{ form.as_p }} -->
+  <label for="username"><b>Username</b></label>
+    <input type="text" placeholder="Enter Username" name="username" required>
 
-    <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="psw" required>
+    <label for="password"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="password" required>
   <button type="submit">Login</button>
 </form>
