@@ -1,5 +1,18 @@
-<h2>SIH</h2>
-<p>A web application for Comparision of human voice samples.</p>
-<h3>Necessary Commands</h3>
-<p>Go to root directory and then type source src/bin/activate to activate the virtual envt.</p>
-<p>to run the app on local server you need to type  python manage.py runserver </p>
+# Voice based login system  
+
+This project uses voice as a metric to authorise login based on a Gausian Mixture Model (GMM) model
+trained on coefficients obtained from Mel Frequency Cepstral coefficients (MFCC)
+
+### Training
+The voice sample is first cleaned to get rid of unnecessary noise. MFCC is calculated for each sample and the data is utilized by 
+a GMM to cluster the voice samples based on the MFCC values.
+
+### Deployment
+The project runs on Django. The web interface prompts for the user to speak. The recorded voice is then matched with the trained GMM model
+to find the best cluster it fits into. If the match is above a certain threshold value (say 90%) then the user is authorised.
+
+### Improvements
+1) Noise reduction must be taken care
+2) Distinction of an actual voice from a recording
+3) A better understanding of GMM and the clusters made ( visualization of the clusters)
+4) Enhanced training of the model (with more dataset)

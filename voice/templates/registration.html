@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>Login | Sign-up Form</title>
+
+
+      <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Open+Sans:400,300'>
+      <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/icon?family=Material+Icons'>
+      <link rel="stylesheet" href="../static/css/styles.css">
+
+
+</head>
+
+<body>
+
+   {% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <h1{% if message.tags %} class="{{ message.tags }}"{% endif %} style="color: red"></h1>
+    <div id="dialog" title="New message">
+            <p>{{message}}</p>
+    </div>
+    {% endfor %}
+</ul>
+{% endif %}
+  <div class="cotn_principal">
+    <div class="cont_centrar">
+
+      <div class="cont_login">
+        <div class="cont_info_log_sign_up">
+            <div class="col_md_login">
+                <div class="cont_ba_opcitiy">
+
+                   <h2>LOGIN</h2>
+                    <p></p>
+                    <button class="btn_login" onclick="cambiar_login()">LOGIN</button>
+                </div>
+            </div>
+
+            <div class="col_md_sign_up">
+                <div class="cont_ba_opcitiy">
+
+
+                 <h2>SIGN UP</h2>
+                  <p></p>
+                  <button class="btn_sign_up" onclick="cambiar_sign_up()">SIGN UP</button>
+                </div>
+            </div>
+      </div>
+
+
+        <div class="cont_back_info">
+          <div class="cont_img_back_grey">
+              <img src="https://images.unsplash.com/42/U7Fc1sy5SCUDIu4tlJY3_NY_by_PhilippHenzler_philmotion.de.jpg?ixlib=rb-0.3.5&q=50&fm=jpg&crop=entropy&s=7686972873678f32efaf2cd79671673d" alt="" />
+          </div>
+
+        </div>
+
+
+
+
+
+<div class="cont_forms" >
+        <div class="cont_img_back_">
+            <img src="https://images.unsplash.com/42/U7Fc1sy5SCUDIu4tlJY3_NY_by_PhilippHenzler_philmotion.de.jpg?ixlib=rb-0.3.5&q=50&fm=jpg&crop=entropy&s=7686972873678f32efaf2cd79671673d" alt="" />
+        </div>
+
+<form method="post" action="/login/" enctype="multipart/form-data">
+  {% csrf_token %}
+      <div class="cont_form_login">
+        <a href="#" onclick="ocultar_login_sign_up()" ><i class="material-icons">&#xE5C4;</i></a>
+
+              <h2>LOGIN</h2>
+
+              <input type="text" placeholder="username" name="username" />
+              <input type="password" placeholder="Password" name="password" />
+              
+              <a href="/record">Click here to record audio</a>
+              <input type='file' placeholder="upload your file" name="input_audio_file">
+
+              <button class="btn_login" type="submit">LOGIN</button>
+      </div>
+
+  </form>
+   <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+          <div class="cont_form_sign_up">
+
+
+
+      <a href="#" onclick="ocultar_login_sign_up()"><i class="material-icons">&#xE5C4;</i></a>
+              <h2>SIGN UP</h2>
+              <input type="text" placeholder="Enter username" name="username"  required />
+
+              <input type="password" placeholder="Enter Password" name="password" required />
+
+              <input type="email" placeholder="Enter Email" name="email" required>
+
+              <input type='file' placeholder="upload your file" name="audio_file">
+
+
+              <a href="/record">Click here to record audio</a>
+              <button class="btn_sign_up" type="submit">SIGN UP</button>
+
+
+    </div>
+</form>
+  </div>
+
+  </div>
+ </div>
+</div>
+
+
+
+    <script  src="../static/js/index.js"></script>
+
+
+
+
+</body>
+
+</html>
