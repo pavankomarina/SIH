@@ -8,7 +8,7 @@ The voice sample is first cleaned to get rid of unnecessary noise. MFCC is calcu
 
 ### Deployment
 The project runs on Django. The web interface prompts for the user to speak. The recorded voice is then matched with the trained GMM model,
-to find the best cluster it fits into. If the match is above a certain threshold value (say 90%) then the user is authorised.
+to find the best cluster it fits into. If the match is above a certain threshold value (say 90%) then the user is authorised..
 
 ### Improvements
 1) Noise reduction must be taken care
