@@ -1,4 +1,4 @@
-# Voice based login system  
+## Voice based login system  
 
 This project uses voice as a metric to authorise login based on a Gausian Mixture Model (GMM) model
 trained on coefficients obtained from Mel Frequency Cepstral coefficients (MFCC)
